@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar{
+  background: linear-gradient(to left, #f79d00 15%, #64f38c 90%);
+}
