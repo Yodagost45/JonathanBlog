@@ -37,13 +37,35 @@
             </li>
             <li class="nav-item">
               <%= link_to goals_path, class: 'nav-link' do %>
-                <b>Goals <i class="fas fa-chess"></i></b>
+                <b>Goals
+                <i class="fas fa-chess"></i></b>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class: 'btn btn-primary navbar_button' do %>
+                Sign up!
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <% if user_signed_in? %>
+                <%= button_to "Log out!", destroy_user_session_path, :method => :delete, class: 'btn btn-primary navbar_button' %>
+              <% else %>
+                <%= link_to new_user_session_path, class: 'btn btn-primary navbar_button' do %>
+                  <b>Log in!</b>
+                <% end %>
               <% end %>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+    <div class="alert_container">
+      <div class="container">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>

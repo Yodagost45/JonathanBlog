@@ -1,5 +1,7 @@
 # README
 
+[JonathanLHall](http://JonathanLHall.co.uk)
+
 My website requirements
 
 Pages we want
@@ -14,6 +16,8 @@ Goal page
 Login page
 Sign up page
 Pages for whatever you want to share, including videos
+
+Ads should be integrated
 
 Home page
 Navigation, log in, sign up, mostly needs to look good 
@@ -47,7 +51,7 @@ Private goals can only be viewed by the person who posted them.
 
 Goal page
 Each goal has a title, details, deadlines, reward for completion,
-and a penalty when time runs out.
+and a penalty when time runs out. Point system for goals?
 
 Login, sign up are self explanatory. Needs a forgotten password
 page and such.
