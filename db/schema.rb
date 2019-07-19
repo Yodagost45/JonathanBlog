@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190717214803) do
+ActiveRecord::Schema.define(version: 20190718140819) do
 
   create_table "edited_users", force: :cascade do |t|
   end
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20190717214803) do
     t.text     "penalty"
     t.text     "reward"
     t.date     "complete_date"
-    t.boolean  "recurring"
+    t.integer  "recurring"
     t.boolean  "completed"
     t.boolean  "private"
     t.datetime "created_at",    null: false

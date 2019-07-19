@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  User.connection
   devise_for :users
-  root to: 'pages#home'
-  resources :goals
+  root 'pages#home'
+  resources :users do
+    resources :goals
+  end
 end

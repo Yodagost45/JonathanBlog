@@ -1,0 +1,44 @@
+<h1>Create your goal</h1>
+<%= form_for [@user, @goal] do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br/>
+    <%= f.text_field :title, autofocus: true, autocomplete: "My goal" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :details %><br/>
+    <%= f.text_field :details, autocomplete: "Add specifics about your goal" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :penalty %><br/>
+    <%= f.text_field :penalty, autocomplete: "Add a penalty" %>
+  </div>
+  
+  <div calss="field">
+    <%= f.label :reward %><br/>
+    <%= f.text_field :reward, autocomplete: "Add a reward" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :complete_date %>
+    <%= f.date_select :complete_date, :start_year => 2019 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :recurring %>
+    <%= f.select :recurring, options_for_select([["one-off", 0], ["daily", 1], ["weekly", 2], ["monthly", 3], ["yearly", 4]]) %>
+  </div>
+  
+  <%= hidden_field_tag(:completed, 0) %>
+  
+  <div class="field">
+    <%= f.label :private %>
+    <%= f.select :private, options_for_select([["public", 0], ["private", 1]]) %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Create goal" %>
+  </div>
+<% end %>

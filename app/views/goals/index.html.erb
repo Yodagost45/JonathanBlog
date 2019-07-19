@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-10">
       <h1>My Goals</h1>
+    </div>
+    <div class="col-sm-2">
+      <h1>
+        <%= link_to new_user_goal_path(current_user.id) do %>
+          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        <% end %>
+      </h1>
     </div>
   </div>
   <div class="row">
