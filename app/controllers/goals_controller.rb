@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   
   # GET request to users/:user_id/goals/new
   def new
-    @user = current_user
+    @goal_section = Goal_section.find(params[:goal_section_id])
     @goal = Goal.new
   end
   
@@ -15,8 +15,8 @@ class GoalsController < ApplicationController
   
   # POST request to /goals
   def create
-    @user = current_user
-    @goal = @user.goals.new(goal_params)
+    @goal_section = goal_section.find(params[:goal_section_id])
+    @goal = @goal_section.goals.new(goal_params)
     if @goal.save
       flash[:success] = "Goal created!"
       redirect_to user_goals_path

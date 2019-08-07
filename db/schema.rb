@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190718140819) do
+ActiveRecord::Schema.define(version: 20190806175415) do
 
   create_table "edited_users", force: :cascade do |t|
   end
 
+  create_table "goal_sections", force: :cascade do |t|
+    t.string  "name"
+    t.string  "colour"
+    t.float   "width"
+    t.float   "height"
+    t.float   "x_pos"
+    t.float   "y_pos"
+    t.boolean "private"
+    t.integer "user_id"
+  end
+
   create_table "goals", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "title"
     t.text     "details"
     t.text     "penalty"
@@ -25,9 +35,9 @@ ActiveRecord::Schema.define(version: 20190718140819) do
     t.integer  "recurring"
     t.boolean  "completed"
     t.boolean  "private"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["user_id"], name: "index_goals_on_user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "goal_section_id"
   end
 
   create_table "users", force: :cascade do |t|

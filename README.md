@@ -52,6 +52,5 @@ Private goals can only be viewed by the person who posted them.
 Goal page
 Each goal has a title, details, deadlines, reward for completion,
 and a penalty when time runs out. Point system for goals?
-
 Login, sign up are self explanatory. Needs a forgotten password
 page and such.

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10">
+      <h1>My Goals</h1>
+    </div>
+    <div class="col-sm-2">
+      <h1>
+        <%= link_to edit_user_goal_section_path(id: current_user.id) do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+      </h1>
+    </div>
+  </div>
+  <!-- for loop each card (goal section) in their stored positions
+        Add an if else statement for if the user has goal sections or not-->
+  <% User.all.each do |goal_section| %>
+    <div class="card">
+      <div class="row">
+        <div class="col-sm-10">
+          <!-- goal_section name -->
+          <h1>
+            <%= goal_section.username %>
+          </h1>
+        </div>
+        <div class="col-sm-2">
+          <h1>
+            <!-- for loop each card (goal) sorted by date to be completed -->
+            <%= link_to new_goal_section_goal_path(goal_section.id, user_id: current_user.id) do %>
+              <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            <% end %>
+          </h1>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
