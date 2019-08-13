@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190806175415) do
+ActiveRecord::Schema.define(version: 20190812214837) do
 
   create_table "edited_users", force: :cascade do |t|
   end
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20190806175415) do
     t.float   "y_pos"
     t.boolean "private"
     t.integer "user_id"
+    t.string  "text_colour"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -38,6 +39,8 @@ ActiveRecord::Schema.define(version: 20190806175415) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "goal_section_id"
+    t.string   "colour"
+    t.string   "text_colour"
   end
 
   create_table "users", force: :cascade do |t|

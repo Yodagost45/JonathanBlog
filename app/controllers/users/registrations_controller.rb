@@ -14,6 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do |resource|
       @user = resource
     end
+    @user.save
     @goal_section = @user.goal_sections.create(default_goal_section_params)
     @goal_section.save
   end

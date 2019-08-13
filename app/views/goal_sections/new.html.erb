@@ -2,43 +2,31 @@
 <%= form_for [@user, @goal_section] do |f| %>
 
   <div class="field">
-    <%= f.label :title %><br/>
-    <%= f.text_field :title, autofocus: true, autocomplete: "My goal" %>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, autofocus: true, autocomplete: "My goal section" %>
   </div>
   
   <div class="field">
-    <%= f.label :details %><br/>
-    <%= f.text_field :details, autocomplete: "Add specifics about your goal" %>
+    <%= f.label :colour %><br/>
+    <%= f.color_field :colour, value: '#ffffff' %>
   </div>
   
   <div class="field">
-    <%= f.label :penalty %><br/>
-    <%= f.text_field :penalty, autocomplete: "Add a penalty" %>
+    <%= f.label :text_colour %><br/>
+    <%= f.color_field :text_colour %>
   </div>
   
-  <div calss="field">
-    <%= f.label :reward %><br/>
-    <%= f.text_field :reward, autocomplete: "Add a reward" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :complete_date %>
-    <%= f.date_select :complete_date, :start_year => 2019 %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :recurring %>
-    <%= f.select :recurring, options_for_select([["one-off", 0], ["daily", 1], ["weekly", 2], ["monthly", 3], ["yearly", 4]]) %>
-  </div>
-  
-  <%= hidden_field_tag(:completed, 0) %>
+  <%= hidden_field_tag(:width, 100) %>
+  <%= hidden_field_tag(:height, 50) %>
+  <%= hidden_field_tag(:x_pos, 0) %>
+  <%= hidden_field_tag(:y_pos, 0) %>
   
   <div class="field">
     <%= f.label :private %>
-    <%= f.select :private, options_for_select([["public", 0], ["private", 1]]) %>
+    <%= f.check_box :private %>
   </div>
   
   <div class="actions">
-    <%= f.submit "Create goal" %>
+    <%= f.submit "Create goal section" %>
   </div>
 <% end %>

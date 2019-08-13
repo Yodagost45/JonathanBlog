@@ -1,4 +1,4 @@
-<h1>Create your goal</h1>
+<h1>Edit your goal</h1>
 <%= form_for [@goal_section, @goal] do |f| %>
 
   <div class="field">
@@ -28,7 +28,7 @@
   
   <div class="field">
     <%= f.label :colour %><br/>
-    <%= f.color_field :colour, value: '#ffffff' %>
+    <%= f.color_field :colour %>
   </div>
   
   <div class="field">
@@ -41,7 +41,11 @@
     <%= f.select :recurring, options_for_select([["one-off", 0], ["daily", 1], ["weekly", 2], ["monthly", 3], ["yearly", 4]]) %>
   </div>
   
-  <%= hidden_field_tag(:completed, false) %>
+  <div class="field">
+    <%= f.label :completed %>
+    <%= f.check_box :completed %>
+  </div>
+  
   <%= hidden_field_tag(:user_id, params[:user_id]) %>
   
   <div class="field">
@@ -50,6 +54,6 @@
   </div>
   
   <div class="actions">
-    <%= f.submit "Create goal" %>
+    <%= f.submit "Update goal" %>
   </div>
 <% end %>

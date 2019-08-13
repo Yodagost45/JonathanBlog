@@ -1,36 +1,93 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-10">
+    <div class="col-sm-11">
       <h1>My Goals</h1>
     </div>
-    <div class="col-sm-2">
-      <h1>
-        <%= link_to edit_user_goal_section_path(id: current_user.id) do %>
-          <i class="fa fa-edit"></i>
-        <% end %>
-      </h1>
-    </div>
+    <!-- if user is viewing own page -->
+    <% if params[:user_id].to_i == current_user.id.to_i %>
+      <div class="col-sm-1">
+        <h1>
+          <%= link_to edit_user_goal_section_path(id: current_user.id) do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+        </h1>
+      </div>
+    <% end %>
+    <!-- end if -->
   </div>
-  <!-- for loop each card (goal section) in their stored positions
-        Add an if else statement for if the user has goal sections or not-->
-  <% User.all.each do |goal_section| %>
-    <div class="card">
-      <div class="row">
-        <div class="col-sm-10">
-          <!-- goal_section name -->
-          <h1>
-            <%= goal_section.username %>
-          </h1>
-        </div>
-        <div class="col-sm-2">
-          <h1>
-            <!-- for loop each card (goal) sorted by date to be completed -->
-            <%= link_to new_goal_section_goal_path(goal_section.id, user_id: current_user.id) do %>
-              <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  <div class="container">
+    <!-- for loop each card (goal section) in their stored positions
+          Add an if else statement for if the user has goal sections or not-->
+    <% GoalSection.where("user_id = ?", params[:user_id]).each do |goal_section| %>
+      <div class="card" style="background-color: <%= goal_section.colour if goal_section.colour %>; color: <%= goal_section.text_colour if goal_section.text_colour %>">
+        <div class="row">
+          <div class="col-sm-11">
+            <!-- goal_section name -->
+            <h2>
+              <%= goal_section.name %>
+            </h2>
+          </div>
+          <!-- if user is viewing own page -->
+          <% if params[:user_id].to_i == current_user.id.to_i %>
+            <div class="col-sm-1">
+              <h1>
+                <!-- for loop each card (goal) sorted by date to be completed -->
+                <%= link_to new_goal_section_goal_path(goal_section.id, user_id: current_user.id) do %>
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                <% end %>
+              </h1>
+            </div>
             <% end %>
-          </h1>
+        </div>
+        
+        <div class="container">
+          <!-- For loop for each goal -->
+          <% Goal.all.where("goal_section_id = ? AND (completed != ? OR completed IS NULL)", goal_section.id, true).each do |goal| %>
+            
+            <!-- display goal info as a link to edit goal page -->
+            <%= link_to edit_goal_section_goal_path(goal_section_id: goal_section.id, id: goal.id, user_id: params[:user_id]) do %>
+              <div class="card goal" style="background-color: <%= goal.colour if goal.colour %>; color: <%= goal.text_colour if goal.text_colour %>">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h3><%= goal.title %></h3>
+                  </div>
+                  <div class="col-sm-3">
+                    <h3>Complete by: </h3>
+                  </div>
+                  <div class="col-sm-3">
+                    <h3><%= goal.complete_date %></h3>
+                  </div>
+                </div>
+                <div class="card goal-details">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <h3><%= goal.title %></h3>
+                    </div>
+                    <div class="col-sm-3">
+                      <h3>Complete by: </h3>
+                    </div>
+                    <div class="col-sm-3">
+                      <h3><%= goal.complete_date %></h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <%= goal.details %>
+                    </div>
+                    <div class="col-sm-3">
+                      <h4>Reward: </h4><%= goal.reward %>
+                    </div>
+                    <div class="col-sm-3">
+                      <h4>Penalty: </h4><%= goal.penalty %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <!-- End for loop -->
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

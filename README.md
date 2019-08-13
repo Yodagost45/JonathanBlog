@@ -48,6 +48,7 @@ Another section for completed goals, mirroring the uncompleted.
 Each goal has a title, a date to be completed by, and a penalty 
 and reward for completion or failure to complete.
 Private goals can only be viewed by the person who posted them.
+Completed goals get a tick, then they are moved to "Completed" section.
 
 Goal page
 Each goal has a title, details, deadlines, reward for completion,
